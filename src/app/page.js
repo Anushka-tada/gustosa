@@ -56,15 +56,42 @@ export default function Home() {
 
   const [startIndex, setStartIndex] = useState(0);
 
+  const getVisibleProducts = (startIndex) => {
+    const totalVisible =
+      window.innerWidth <= 576
+        ? 1
+        : window.innerWidth <= 991
+        ? 2
+        : window.innerWidth <= 1025
+        ? 3
+        : 4;
+  
+    return products
+      .slice(startIndex, startIndex + totalVisible)
+      .concat(
+        products.slice(0, Math.max(0, startIndex + totalVisible - products.length))
+      );
+  };
+  
+  const [visibleProducts, setVisibleProducts] = useState(getVisibleProducts(0));
+  
+  useEffect(() => {
+    const handleResize = () => setVisibleProducts(getVisibleProducts(startIndex));
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [startIndex]);
+  
   const nextSlide = () => {
     setStartIndex((prevIndex) => (prevIndex + 1) % products.length);
+    setVisibleProducts(getVisibleProducts(startIndex + 1));
   };
-
+  
   const prevSlide = () => {
-    setStartIndex(
-      (prevIndex) => (prevIndex - 1 + products.length) % products.length
-    );
+    setStartIndex((prevIndex) => (prevIndex - 1 + products.length) % products.length);
+    setVisibleProducts(getVisibleProducts(startIndex - 1));
   };
+  
+  
 
   const images = [
     "/assets/hero-section.jpg",
@@ -100,7 +127,7 @@ export default function Home() {
           <h1>
             Say goodbye to bland makhanas; it's time to savor the flavors.
           </h1>
-          <p className="fs-5 mb-4">Get extra 5% off on flavoured makhanas.</p>
+          <p className="fs-6 fs-lg-5 mb-4">Get extra 5% off on flavoured makhanas.</p>
           <div className="shop-now d-flex gap-2 align-items-center justify-content-center my-3">
             <p className="fs-5 mb-0 text-white">Shop Now</p>
             <img src="/assets/next.png" alt="Next Icon" />

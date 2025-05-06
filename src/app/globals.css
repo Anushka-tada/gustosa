@@ -9,14 +9,20 @@
 
 /* navbar css */
 
-.navbar-outer{
+/* Base Styles */
+.navbar-outer {
   padding-left: 100px;
   padding-right: 100px;
 }
-.logo{
-  width: 14% !important;
+
+.logo {
+  width: 13% !important;
 }
-.nav-icons img{
+.logo-img{
+  width: 100%;
+}
+
+.nav-icons img {
   height: 28px;
   width: 28px;
 }
@@ -25,6 +31,53 @@
   font-size: 17px;
   color: var(--primary-color);
 }
+
+/* Hamburger Icon */
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+.hamburger img {
+  height: 28px;
+  width: 28px;
+}
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 12px;
+    right: 0;
+    background-color: white;
+    padding: 20px;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+  .logo {
+    width: 18% !important;
+  }
+}
+
+
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-icons {
+    gap: 10px;
+  }
+
+ 
 
 /* home page css */
 
@@ -55,6 +108,34 @@
 .shop-now img{
    width: 19px;
    height: 19px;
+}
+
+@media(max-width:1025px){
+  .hero-section1 h1{
+    font-size: 28px;
+  }
+  .hero-section{
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 70px;
+    height: 100%;
+    border-radius: 14px;
+  }
+  
+}
+
+@media(max-width:450px){
+  .hero-section1{
+    width: 80%;
+    padding-left: 5%;
+
+}
+.logo {
+  width: 26% !important;
+}
 }
 
 .carousel-container {
@@ -150,3 +231,4 @@
 .product-card:hover .wishlist-icon {
   opacity: 1;
 }
+
