@@ -30,7 +30,8 @@
 }
 
 .nav-links li {
-  font-size: 17px;
+  font-size: 18px;
+  font-weight: 500;
   color: var(--primary-color);
 }
 
@@ -206,6 +207,22 @@
   font-size: 24px;
   cursor: pointer;
 }
+.carousel-btn2{
+  background: rgb(222, 222, 222);
+  border-radius: 50%;
+  width: 37px;
+  height: 37px;
+  padding: 3px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carousel-btn2 img{
+   width: 19px;
+   height: 18px;
+}
 .product-img{
     width: 70%;
     display: flex;
@@ -284,4 +301,80 @@
     margin-top: 10px;
     margin-bottom: 35px;
   }
+}
+
+@media (max-width: 474px) 
+{
+  .product-descrip{
+    font-size: 13px;
+  }
+  .price1{
+    font-size: 12px;
+  }
+  .price2{
+
+    font-size: 12px;
+  }
+  .product-card {
+    
+    padding: 8px 8px ;
+ 
+  }
+  .add-to-cart {
+
+    padding: 5px 15px;
+
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .products-grid {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    overflow: hidden;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    width: 100%;
+  }
+  .product-img{
+    margin-bottom: 7px;
+  }
+  
+}
+
+.featured {
+  margin: 30px 80px 60px 80px;
+}
+
+.feature-product {
+  padding: 30px 15px;
+  border-radius: 8px;
+  background-color: #fff;
+  width: 100%;
+}
+
+
+.featured-bottom {
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-bottom: 60px;
+}
+.feature-card1{
+  background: url("https://freshcart-next-js.vercel.app/images/banner/grocery-banner.png");
+  background-size: contain;
+  height: 255px;
+  border-radius: 15px;
+}
+.feature-card2{
+  background: url("https://freshcart-next-js.vercel.app/images/banner/grocery-banner-2.jpg");
+  background-size: contain;
+  height: 260px;
+  border-radius: 15px;
+}
+.shop-btn{
+  height: 35px;
+  width: 120px;
+  background-color: #1e1e1e;
+  color: white;
+  border-radius: 9px;
+  border: none;
 }

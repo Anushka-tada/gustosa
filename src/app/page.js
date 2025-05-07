@@ -1,4 +1,5 @@
 "use client";
+import FeaturedCarousel from "./Components/FeaturedCarousel";
 import Navbar from "./Components/Navbar";
 import { useEffect, useState } from "react";
 
@@ -62,9 +63,9 @@ export default function Home() {
   useEffect(() => {
     const updateVisibleCount = () => {
       const width = window.innerWidth;
-      if (width <= 576) setVisibleCount(1);
-      else if (width <= 800) setVisibleCount(2);
-      else if (width <= 1025) setVisibleCount(3);
+      if (width <= 600) setVisibleCount(2);
+      else if (width <= 800) setVisibleCount(3);
+      else if (width <= 1025) setVisibleCount(4);
       else setVisibleCount(4);
     };
 
@@ -78,9 +79,7 @@ export default function Home() {
     const end = startIndex + visibleCount;
     const visible = products
       .slice(startIndex, end)
-      .concat(
-        products.slice(0, Math.max(0, end - products.length))
-      );
+      .concat(products.slice(0, Math.max(0, end - products.length)));
     setVisibleProducts(visible);
   }, [startIndex, visibleCount, products]);
 
@@ -90,12 +89,10 @@ export default function Home() {
   };
 
   const prevSlide = () => {
-    setStartIndex((prev) =>
-      (prev - visibleCount + products.length) % products.length
+    setStartIndex(
+      (prev) => (prev - visibleCount + products.length) % products.length
     );
   };
-  
-  
 
   const images = [
     "/assets/hero-section.jpg",
@@ -131,7 +128,9 @@ export default function Home() {
           <h1>
             Say goodbye to bland makhanas; it's time to savor the flavors.
           </h1>
-          <p className="fs-6 fs-lg-5 mb-4">Get extra 5% off on flavoured makhanas.</p>
+          <p className="fs-6 fs-lg-5 mb-4">
+            Get extra 5% off on flavoured makhanas.
+          </p>
           <div className="shop-now d-flex gap-2 align-items-center justify-content-center my-3">
             <p className="fs-5 mb-0 text-white">Shop Now</p>
             <img src="/assets/next.png" alt="Next Icon" />
@@ -142,46 +141,74 @@ export default function Home() {
       {/* most popular section */}
 
       <div className="most-popular d-flex flex-column align-items-center">
-      <p className="mb-0">Most Popular</p>
-      <h1 className="text-center mx-2">Discover flavours in demand</h1>
-      <div className="carousel-container">
-        <button onClick={prevSlide} className="carousel-btn">
-          <img src="/assets/back.png" alt="Previous" />
-        </button>
+        <p className="mb-0">Most Popular</p>
+        <h1 className="text-center mx-2">Discover flavours in demand</h1>
+        <div className="carousel-container">
+          <button onClick={prevSlide} className="carousel-btn">
+            <img src="/assets/back.png" alt="Previous" />
+          </button>
 
-        <div className="products-grid">
-          {visibleProducts.map((product) => (
-            <div
-              key={product.id}
-              className="product-card d-flex flex-column justify-content-between"
-            >
-              <div>
-                <img
-                  src={product.image}
-                  alt={product.description}
-                  className="product-img"
-                />
-                <p className="product-descrip">{product.description}</p>
-                <div className="wishlist-icon">
-                  <img src="https://cdn-icons-png.flaticon.com/128/6051/6051092.png" />
+          <div className="products-grid">
+            {visibleProducts.map((product) => (
+              <div
+                key={product.id}
+                className="product-card d-flex flex-column justify-content-between"
+              >
+                <div>
+                  <img
+                    src={product.image}
+                    alt={product.description}
+                    className="product-img"
+                  />
+                  <p className="product-descrip">{product.description}</p>
+                  <div className="wishlist-icon">
+                    <img src="https://cdn-icons-png.flaticon.com/128/6051/6051092.png" />
+                  </div>
+                </div>
+                <div>
+                  <div className="price d-flex gap-1">
+                    <p className="price1">{product.price1}</p>
+                    <p className="price2">{product.price2}</p>
+                  </div>
+                  <button className="add-to-cart">Add to Cart</button>
                 </div>
               </div>
-              <div>
-                <div className="price d-flex gap-1">
-                  <p className="price1">{product.price1}</p>
-                  <p className="price2">{product.price2}</p>
-                </div>
-                <button className="add-to-cart">Add to Cart +</button>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          <button onClick={nextSlide} className="carousel-btn">
+            <img src="/assets/next2.png" alt="Next" />
+          </button>
         </div>
-
-        <button onClick={nextSlide} className="carousel-btn">
-          <img src="/assets/next2.png" alt="Next" />
-        </button>
       </div>
-    </div>
+
+      {/* Featured categories */}
+
+      <FeaturedCarousel />
+
+      <div className="featured-bottom ">
+        <div className="row">
+          <div className="col-lg-6 col-12">
+           <div className="feature-card1 p-3 d-flex flex-column justify-content-center">
+           <h3 className=" fw-bold">Fruits & Vegetables</h3>
+            <p>Get Upto 30% Off</p>
+            <button className="shop-btn">
+              Shop Now
+            </button>
+           </div>
+          </div>
+
+          <div className="col-lg-6 col-12">
+           <div className=" feature-card2 p-3 d-flex flex-column justify-content-center">
+           <h3 className=" fw-bold">Freshly Baked Buns</h3>
+            <p>Get Upto 25% Off</p>
+            <button className="shop-btn">
+              Shop Now
+            </button>
+           </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
