@@ -55,40 +55,44 @@ export default function Home() {
   ];
 
   const [startIndex, setStartIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(4);
+  const [visibleProducts, setVisibleProducts] = useState([]);
 
-  const getVisibleProducts = (startIndex) => {
-    const totalVisible =
-      window.innerWidth <= 576
-        ? 1
-        : window.innerWidth <= 991
-        ? 2
-        : window.innerWidth <= 1025
-        ? 3
-        : 4;
-  
-    return products
-      .slice(startIndex, startIndex + totalVisible)
-      .concat(
-        products.slice(0, Math.max(0, startIndex + totalVisible - products.length))
-      );
-  };
-  
-  const [visibleProducts, setVisibleProducts] = useState(getVisibleProducts(0));
-  
+  // 1️⃣ Update visible count based on screen size
   useEffect(() => {
-    const handleResize = () => setVisibleProducts(getVisibleProducts(startIndex));
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [startIndex]);
-  
+    const updateVisibleCount = () => {
+      const width = window.innerWidth;
+      if (width <= 576) setVisibleCount(1);
+      else if (width <= 800) setVisibleCount(2);
+      else if (width <= 1025) setVisibleCount(3);
+      else setVisibleCount(4);
+    };
+
+    updateVisibleCount();
+    window.addEventListener("resize", updateVisibleCount);
+    return () => window.removeEventListener("resize", updateVisibleCount);
+  }, []);
+
+  // 2️⃣ Update visible products when startIndex or visibleCount changes
+  useEffect(() => {
+    const end = startIndex + visibleCount;
+    const visible = products
+      .slice(startIndex, end)
+      .concat(
+        products.slice(0, Math.max(0, end - products.length))
+      );
+    setVisibleProducts(visible);
+  }, [startIndex, visibleCount, products]);
+
+  // 3️⃣ Navigation
   const nextSlide = () => {
-    setStartIndex((prevIndex) => (prevIndex + 1) % products.length);
-    setVisibleProducts(getVisibleProducts(startIndex + 1));
+    setStartIndex((prev) => (prev + visibleCount) % products.length);
   };
-  
+
   const prevSlide = () => {
-    setStartIndex((prevIndex) => (prevIndex - 1 + products.length) % products.length);
-    setVisibleProducts(getVisibleProducts(startIndex - 1));
+    setStartIndex((prev) =>
+      (prev - visibleCount + products.length) % products.length
+    );
   };
   
   
@@ -138,48 +142,46 @@ export default function Home() {
       {/* most popular section */}
 
       <div className="most-popular d-flex flex-column align-items-center">
-        <p className="mb-0">Most Popular</p>
-        <h1>Discover flavours in demand</h1>
-        <div className="carousel-container">
-          <button onClick={prevSlide} className="carousel-btn">
-            <img src="/assets/back.png"></img>
-          </button>
+      <p className="mb-0">Most Popular</p>
+      <h1 className="text-center mx-2">Discover flavours in demand</h1>
+      <div className="carousel-container">
+        <button onClick={prevSlide} className="carousel-btn">
+          <img src="/assets/back.png" alt="Previous" />
+        </button>
 
-          <div className="products-grid">
-            {products
-              .slice(startIndex, startIndex + 4)
-              .concat(
-                products.slice(0, Math.max(0, startIndex + 4 - products.length))
-              )
-              .map((product) => (
-                <div key={product.id} className="product-card d-flex flex-column justify-content-between">
-                 <div>
-                 <img
-                    src={product.image}
-                    alt={product.description}
-                    className="product-img"
-                  />
-                  <p className="product-descrip">{product.description} </p>
-                  <div class="wishlist-icon">
-                    <img src="https://cdn-icons-png.flaticon.com/128/6051/6051092.png"></img>
-                  </div>
-                  </div>
-                  <div className="">
-                  <div className="price d-flex gap-1">
-                    <p className="price1">{product.price1}</p>
-                    <p className="price2">{product.price2}</p>
-                  </div>
-                    <button className="add-to-cart">Add to Cart + </button>
-                  </div>
+        <div className="products-grid">
+          {visibleProducts.map((product) => (
+            <div
+              key={product.id}
+              className="product-card d-flex flex-column justify-content-between"
+            >
+              <div>
+                <img
+                  src={product.image}
+                  alt={product.description}
+                  className="product-img"
+                />
+                <p className="product-descrip">{product.description}</p>
+                <div className="wishlist-icon">
+                  <img src="https://cdn-icons-png.flaticon.com/128/6051/6051092.png" />
                 </div>
-              ))}
-          </div>
-
-          <button onClick={nextSlide} className="carousel-btn">
-            <img src="/assets/next2.png"></img>
-          </button>
+              </div>
+              <div>
+                <div className="price d-flex gap-1">
+                  <p className="price1">{product.price1}</p>
+                  <p className="price2">{product.price2}</p>
+                </div>
+                <button className="add-to-cart">Add to Cart +</button>
+              </div>
+            </div>
+          ))}
         </div>
+
+        <button onClick={nextSlide} className="carousel-btn">
+          <img src="/assets/next2.png" alt="Next" />
+        </button>
       </div>
+    </div>
     </>
   );
 }
