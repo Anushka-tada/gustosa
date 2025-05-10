@@ -70,11 +70,11 @@ const prev = () => {
         </div>
 
         {/* Cards */}
-        <div className="d-flex gap-4 flex-wrap justify-content-center">
+        <div className="d-flex gap-4 flex-wrap justify-content-center ">
           {getVisibleCards().map((card, index) => (
             <div
               key={index}
-              className="card faq-card  shadow"
+              className="card faq-card  shadow d-flex flex-column justify-content-center"
               style={{ width: "19rem", minHeight: "180px" }}
             >
               <h5 className="mb-3 faq-title">{card.title}</h5>

@@ -150,7 +150,7 @@ export default function Home() {
         <h1 className="text-center mx-2">Discover flavours in demand</h1>
         <div className="carousel-container">
           <button onClick={prevSlide} className="carousel-btn">
-            <img src="/assets/back.png" alt="Previous" />
+            <img src="/assets/back.png" alt="Previous" className="popular-btn" />
           </button>
 
           <div className="products-grid">
@@ -179,7 +179,7 @@ export default function Home() {
           </div>
 
           <button onClick={nextSlide} className="carousel-btn">
-            <img src="/assets/next2.png" alt="Next" />
+            <img src="/assets/next2.png" alt="Next" className="popular-btn" />
           </button>
         </div>
       </div>

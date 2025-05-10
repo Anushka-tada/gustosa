@@ -47,8 +47,8 @@ const Footer = () => {
             </div>
         </div>
 
-       <div className="d-flex flex-wrap justify-content-between mt-4 pt-2">
-         <p className="mb-0 pb-5 text-light">© 2024. All Rights Reserved Gustosa Foods</p>
+       <div className="d-flex flex-wrap justify-content-between mt-4 pt-4 pb-5">
+         <p className="mb-0 pb-2 text-light">© 2024. All Rights Reserved Gustosa Foods</p>
          <div className="d-flex gap-3">
              
                             <img src="/assets/paypal.png" className="company-img"/>
@@ -59,7 +59,7 @@ const Footer = () => {
          </div>
        </div>
        <div className="d-flex justify-content-center mt-1">
-        <p className="text-light">Powered by <span className="geent-text">DG10</span> </p>
+        <p className="text-light">Developed by <span className="geent-text"><a href="https://dousoft.in/" target="blank">dousoft It Solution Pvt Ltd</a></span> </p>
        </div>
       </div>
     </>
