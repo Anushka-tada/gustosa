@@ -1,7 +1,12 @@
 "use client";
+import DailySell from "./Components/DailySell";
 import FeaturedCarousel from "./Components/FeaturedCarousel";
 import Navbar from "./Components/Navbar";
 import { useEffect, useState } from "react";
+import Testimonals from "./Components/Testimonals";
+import Faq from "./Components/Faq";
+import ShopFromFarm from "./Components/ShopFromFarm";
+import Footer from "./Components/Footer";
 
 export default function Home() {
   const products = [
@@ -150,10 +155,7 @@ export default function Home() {
 
           <div className="products-grid">
             {visibleProducts.map((product) => (
-              <div
-                key={product.id}
-                className="product-card d-flex flex-column justify-content-between"
-              >
+              <div key={product.id} className="product-card d-flex flex-column justify-content-between" >
                 <div>
                   <img
                     src={product.image}
@@ -182,14 +184,20 @@ export default function Home() {
         </div>
       </div>
 
+      {/* shop from our farm */}
+
+      <ShopFromFarm/>
+
       {/* Featured categories */}
 
       <FeaturedCarousel />
 
+      {/* feature bottom */}
+
       <div className="featured-bottom ">
         <div className="row">
-          <div className="col-lg-6 col-12">
-           <div className="feature-card1 p-3 d-flex flex-column justify-content-center">
+          <div className="col-lg-6 col-12 mt-3">
+           <div className="feature-card feature-card1  d-flex flex-column justify-content-center">
            <h3 className=" fw-bold">Fruits & Vegetables</h3>
             <p>Get Upto 30% Off</p>
             <button className="shop-btn">
@@ -198,8 +206,8 @@ export default function Home() {
            </div>
           </div>
 
-          <div className="col-lg-6 col-12">
-           <div className=" feature-card2 p-3 d-flex flex-column justify-content-center">
+          <div className="col-lg-6 col-12 mt-3 ">
+           <div className=" feature-card feature-card2  d-flex flex-column justify-content-center">
            <h3 className=" fw-bold">Freshly Baked Buns</h3>
             <p>Get Upto 25% Off</p>
             <button className="shop-btn">
@@ -209,6 +217,54 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* Daily best sells section */}
+         <DailySell/>
+
+          {/* testimonals section */}
+          <Testimonals/>
+
+         {/* free shiping section */}
+
+         <div className="free-shiping ">
+           <div className="row">
+              <div className="col-lg-4 col-sm-6 col-12 d-flex gap-4 justify-content-center mb-4">
+                <div className="services-icon-wrapper">
+                 <img src="/assets/car.png" className="services-icon"/>
+                 </div>
+                 <div>
+                  <p className="mb-0 fw-bold" > Free Shipping</p>
+                  <p>On Order Over $49</p>
+                 </div>
+              </div>
+
+               <div className="col-lg-4 col-sm-6 col-12  d-flex gap-4 justify-content-center mb-4">
+                <div className="services-icon-wrapper">
+                 <img src="/assets/viber.png" className="services-icon"/>
+                 </div>
+                 <div>
+                  <p className="mb-0 fw-bold">24/7 Customer Care</p>
+                  <p>Call us on anytime</p>
+                 </div>
+              </div>
+
+               <div className="col-lg-4 col-sm-6 col-12 d-flex gap-4 justify-content-center mb-4">
+                <div className="services-icon-wrapper">
+                 <img src="/assets/secure-payment.png" className="services-icon"/>
+                 </div>
+                 <div>
+                  <p className="mb-0 fw-bold">Secure payment</p>
+                  <p>100% Safe Payment</p>
+                 </div>
+              </div>
+           </div>
+         </div>
+            
+            <Faq/>
+
+            {/* footer */}
+
+            <Footer/>
     </>
   );
 }
