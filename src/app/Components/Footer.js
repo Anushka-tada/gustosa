@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <>
       <div className="footer-outer">
-        <div className="footer-inner d-flex flex-wrap flex-lg-nowrap justify-content-center gap-4">
+        <div className="footer-inner d-flex  gap-4">
             <div className="footer-1 footer-item">
                   <img src='/assets/logo.png'  alt='logo' className="img-fluid footer-logo" />
                 <p className="text-white mt-4">We’re passionate about crafting delicious and nutritious 
@@ -22,7 +22,7 @@ const Footer = () => {
                        </div>
             </div>
 
-            <div className="footer-2 footer-item d-flex flex-column align-items-center">
+            <div className="footer-2 footer-item d-flex flex-column align-items-center text-center">
                 <h6>Explore Links</h6>
                 <hr></hr>
                 <div>
@@ -47,7 +47,20 @@ const Footer = () => {
             </div>
         </div>
 
-        <p className="mb-0 pb-5 text-light">© 2024. All Rights Reserved Gustosa Foods</p>
+       <div className="d-flex flex-wrap justify-content-between mt-4 pt-2">
+         <p className="mb-0 pb-5 text-light">© 2024. All Rights Reserved Gustosa Foods</p>
+         <div className="d-flex gap-3">
+             
+                            <img src="/assets/paypal.png" className="company-img"/>
+                             <img src="/assets/visa.png" className="company-img"/>
+                              <img src="/assets/mastercard.png" className="company-img"/>
+                               <img src="/assets/discover.png" className="company-img"/>
+                                <img src="/assets/JCB.png" className="company-img"/>
+         </div>
+       </div>
+       <div className="d-flex justify-content-center mt-1">
+        <p className="text-light">Powered by <span className="geent-text">DG10</span> </p>
+       </div>
       </div>
     </>
   );

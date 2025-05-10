@@ -184,17 +184,19 @@ export default function Home() {
         </div>
       </div>
 
+       {/* Featured categories */}
+
+      <FeaturedCarousel />
+
       {/* shop from our farm */}
 
       <ShopFromFarm/>
 
-      {/* Featured categories */}
-
-      <FeaturedCarousel />
+     
 
       {/* feature bottom */}
 
-      <div className="featured-bottom ">
+      {/* <div className="featured-bottom ">
         <div className="row">
           <div className="col-lg-6 col-12 mt-3">
            <div className="feature-card feature-card1  d-flex flex-column justify-content-center">
@@ -216,7 +218,7 @@ export default function Home() {
            </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Daily best sells section */}
          <DailySell/>

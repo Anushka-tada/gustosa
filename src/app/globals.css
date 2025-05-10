@@ -516,7 +516,7 @@
   margin-top: 25px;
 }
  .daily-sell1{
-  background: url("https://freshcart-next-js.vercel.app/images/banner/banner-deal.jpg");
+  background: url("https://media.istockphoto.com/id/1250254277/photo/makhana-or-lotus-seed.jpg?s=612x612&w=0&k=20&c=lkG3E1jix3R5WDtwcnGTbfumVz6vpo21ih_G5X3DDYw=");
   /* height: 470px; */
   background-position: cover;
    padding: 25px !important;
@@ -652,6 +652,10 @@
   background-color: #F1F5F0AB !important;
   border-radius: 17px !important;
 }
+.card {
+  min-height: 305px !important;
+}
+
 .testi-h{
   color: var(--secondary-color);
   margin-right: 10vw;
@@ -720,3 +724,51 @@
 .footer-2 p{
   color: var(--secondary-color) !important;
 }
+.footer-2 p , .footer-3 p{
+  margin-bottom: 3px;
+}
+.company-img{
+  width: 34px;
+  height: 28px;
+  background-color: white;
+  padding: 3px;
+  border-radius: 3px;
+}
+.geent-text{
+  color: var(--secondary-color);
+}
+  .footer-inner{
+   justify-content: center;
+}
+
+@media (max-width:995px){
+  .footer-outer{
+      padding-top: 50px;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+}
+
+@media (max-width:670px){
+  .footer-inner{
+   flex-wrap: wrap;
+   justify-content: space-between !important;
+}
+.footer-item {
+    width: 47%;
+}
+}
+@media (max-width:441px){
+  .footer-inner{
+   flex-wrap: wrap;
+   justify-content: center !important;
+}
+.footer-item {
+    width: 80%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+}
+
