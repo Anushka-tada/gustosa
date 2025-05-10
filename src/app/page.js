@@ -157,11 +157,11 @@ export default function Home() {
             {visibleProducts.map((product) => (
               <div key={product.id} className="product-card d-flex flex-column justify-content-between" >
                 <div>
-                  <img
+                 <a href="/Product"> <img
                     src={product.image}
                     alt={product.description}
                     className="product-img"
-                  />
+                  /></a>
                   <p className="product-descrip">{product.description}</p>
                   <div className="wishlist-icon">
                     <img src="https://cdn-icons-png.flaticon.com/128/6051/6051092.png" />
